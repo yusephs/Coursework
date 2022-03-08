@@ -1,0 +1,127 @@
+#import csv
+#file = open("data.csv")
+#csvreader = csv.reader(file)
+#header = next(csvreader)
+#print(header)
+#rows = [6]
+#for row in csvreader:
+ #   rows.append(row)
+#print(rows)
+#file.close()
+
+#import csv
+#with open('rotten_tomatoes_movies(1)','r')as csv_file:
+#    reader = csv.reader (csv_file)
+
+ #   for row in reader:
+  #      print(row)
+   # csv_file.close()    
+
+
+
+#import csv
+#with open('rotten_tomatoes_movies(1)', 'r') as file:
+ #   reader = csv.reader(file)
+  #  for row in reader:
+   #     print(row)
+
+
+#myfile = open("rotten_tomatoes_movies")
+
+#for line in myfile:
+ #   print(line)
+
+
+
+
+#myfile = open("rotten_tomatoes_movies(1)")
+#txt = myfile.read()
+#print(txt)
+#myfile.close()
+
+
+
+
+
+
+
+
+#file = open("C:/oneDrive-Liverpool John Moores University/Documents/rotten tomatoes/rotten_tomatoes_movies(1).csv", "r")
+#content = file.read()
+#print(content)
+#file.close()
+
+
+
+
+
+
+
+
+
+
+#file = open("rotten_tomatoes_movies(1)", "r")
+#content = file.readline()
+#print(content)
+#file.close()
+
+
+import csv
+
+def searchByMovieTitle():
+    movie_title=str(input('Enter Movie Title\n'))
+    csv_file=csv.reader(open("data.csv"))
+    for row in csv_file:
+        if movie_title in row[1]:
+            print(row[5:6])
+
+def searchByGenres():
+    genres=str(input('Enter Genress to Show Actors and run time\n'))
+    csv_file=csv.reader(open("data.csv",'r'))
+
+    for row in csv_file:
+        if genres in row[5]:
+            print(row[8:11])
+
+def searchByDirector():
+    director=str(input('Enter Director Name to show the Genres \n'))
+
+    csv_file=csv.reader(open("data.csv",'r'))
+
+    for row in csv_file:
+        if director in row [6]:
+               print (row [5])
+
+
+print('Enter 1 to search by Movie title')
+print('Enter 2 to search by Geners')
+print('Enter 3 to search by Director')
+
+src=int(input('Enter here: '))
+
+if src==1:
+    searchByMovieTitle()
+elif src==2:
+    searchByGenres()
+elif src==3:
+    searchByDirector()
+else:
+    print('Sorry, invalid')
+
+
+
+
+
+# importing pandas package
+#import pandas as pd
+
+# making data frame from csv file
+#data = pd.read_csv("data.csv", index_col ="movie_title")
+ 
+# retrieving columns by indexing operator
+#first = data["Deep Blue"]
+ 
+ 
+ 
+#print(first)
+
