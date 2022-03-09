@@ -1,5 +1,3 @@
-import pandas as pd
+a = 1/3
+print("Rafiq " + "%.2f" % a)
 
-df = pd.read_csv('data2.csv', sep='|')
-
-print(df.to_string()) 

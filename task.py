@@ -29,10 +29,10 @@ pbf = 100*bf/bg
 pbr = 100*br/bg
 
 
-print("percentage of certified fresh is: " + str(pacf))
-print("percentage of fresh is: " + str(paf))
-print("percentage of rotten is: " + str(par) + "\n")
+print("percentage of certified fresh is: " + "%.2f" % pacf)
+print("percentage of fresh is: " + "%.2f" % paf)
+print("percentage of rotten is: " + "%.2f" % par + "\n")
 
-print("percentage of certified fresh is: " + str(pbcf))
-print("percentage of fresh is: " + str(pbf))
-print("percentage of rotten is: " + str(pbr))
+print("percentage of certified fresh is: " + "%.2f" % pbcf)
+print("percentage of fresh is: " + "%.2f" % pbf)
+print("percentage of rotten is: " + "%.2f" % pbr)
