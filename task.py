@@ -2,12 +2,11 @@ import csv
 from pickle import TRUE
 import pandas as pd
 from matplotlib import pyplot as plt
-import numpy as np
 
 df = pd.read_csv('data2.csv', sep = '|')
 
 def Validation():
-    global acf, af, ar, ag
+    global acf, af, ar, ag, genre
     print("1- Comedy\n2- Drama\n3- Horror\n4- Classics\n5- Documentary\n6- Art House & International\n7- Action & Adventure\n")
 
     a = input("Please select a genre from 1-7\n")
@@ -16,24 +15,24 @@ def Validation():
         
 
     if (a == "1"):
-        firstGenre = "Comedy"
+        genre = "Comedy"
     elif (a=="2"):
-        firstGenre = "Drama"
+        genre = "Drama"
     elif (a=="3"):
-        firstGenre = "Horror"
+        genre = "Horror"
     elif (a=="4"):
-        firstGenre = "Classics"
+        genre = "Classics"
     elif (a=="5"):
-        firstGenre = "Documentary"
+        genre = "Documentary"
     elif (a=="6"):
-        firstGenre = "Art House & International"
+        genre = "Art House & International"
     elif (a=="7"):
-        firstGenre = "Action & Adventure"
+        genre = "Action & Adventure"
 
 
-    acf =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Certified-Fresh')])
-    af =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Fresh')])
-    ar =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Rotten')])
+    acf =len(df[(df['genres']==genre)&(df['tomatometer_status']=='Certified-Fresh')])
+    af =len(df[(df['genres']==genre)&(df['tomatometer_status']=='Fresh')])
+    ar =len(df[(df['genres']==genre)&(df['tomatometer_status']=='Rotten')])
     ag = acf+af+ar
 
 print("\nPlease choose the first genre you would like to compare")
@@ -41,21 +40,25 @@ Validation()
 pacf = acf/ag
 paf = af/ag
 par = ar/ag
-
+firstGenre = genre
 
 print("\nPlease choose the second genre you would like to compare")
 Validation()
 pbcf = acf/ag
 pbf = af/ag
 pbr = ar/ag
+secondGenre = genre
 
+data1 = [pacf, paf, par]
+data2 = [pbcf, pbf, pbr]
 
-data1 = np.array([pacf, paf, par])
-data2 = np.array([pbcf, pbf, pbr])
+labels = 'Certified Fresh', 'Fresh', 'Rotten'
 
 fig, (ax1, ax2) = plt.subplots(1, 2)
 
-ax1.pie(data1)
-ax2.pie(data2)
+ax1.pie(data1, labels=labels, autopct='%.1f%%')
+ax2.pie(data2, labels=labels, autopct='%.1f%%')
 
+ax1.set_title(firstGenre)
+ax2.set_title(secondGenre)
 plt.show()
