@@ -1,5 +1,4 @@
 import csv
-from pickle import TRUE
 import pandas as pd
 from matplotlib import pyplot as plt
 
