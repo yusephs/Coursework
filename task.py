@@ -6,9 +6,6 @@ import numpy as np
 
 df = pd.read_csv('data2.csv', sep = '|')
 
-
-
-print("\nPlease choose the first genre you would like to compare")
 def Validation():
     global acf, af, ar, ag
     print("1- Comedy\n2- Drama\n3- Horror\n4- Classics\n5- Documentary\n6- Art House & International\n7- Action & Adventure\n")
@@ -39,6 +36,7 @@ def Validation():
     ar =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Rotten')])
     ag = acf+af+ar
 
+print("\nPlease choose the first genre you would like to compare")
 Validation()
 pacf = acf/ag
 paf = af/ag
@@ -47,7 +45,6 @@ par = ar/ag
 
 print("\nPlease choose the second genre you would like to compare")
 Validation()
-
 pbcf = acf/ag
 pbf = af/ag
 pbr = ar/ag
