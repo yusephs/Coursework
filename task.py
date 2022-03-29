@@ -6,52 +6,52 @@ import numpy as np
 
 df = pd.read_csv('data2.csv', sep = '|')
 
-while TRUE:
-    a = input("What is the first genre you would like to compare\n").title()
-    if (len(df.loc[df['genres']==a]) > 0 ):
-        break
-
-#    a = input("Enter a valid genre\n").title()
 
 
-acf =len(df[(df['genres']==a)&(df['tomatometer_status']=='Certified-Fresh')]) 
-#na =acf =len(df[(df['genres']==a)&(df['tomatometer_status'] !='Certified-Fresh' !='Fresh'!='Rotten')])
-af =len(df[(df['genres']==a)&(df['tomatometer_status']=='Fresh')])
-ar =len(df[(df['genres']==a)&(df['tomatometer_status']=='Rotten')])
-ag = acf+af+ar
-#ag =len(df[(df['genres']==a)]) Includes movies with missing tomatometer status
+print("\nPlease choose the first genre you would like to compare")
+def Validation():
+    global acf, af, ar, ag
+    print("1- Comedy\n2- Drama\n3- Horror\n4- Classics\n5- Documentary\n6- Art House & International\n7- Action & Adventure\n")
 
+    a = input("Please select a genre from 1-7\n")
+    while a not in ["1", "2", "3", "4", "5", "6", "7"]:
+        a = input("Please a valid input from 1-7\n")
+        
+
+    if (a == "1"):
+        firstGenre = "Comedy"
+    elif (a=="2"):
+        firstGenre = "Drama"
+    elif (a=="3"):
+        firstGenre = "Horror"
+    elif (a=="4"):
+        firstGenre = "Classics"
+    elif (a=="5"):
+        firstGenre = "Documentary"
+    elif (a=="6"):
+        firstGenre = "Art House & International"
+    elif (a=="7"):
+        firstGenre = "Action & Adventure"
+
+
+    acf =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Certified-Fresh')])
+    af =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Fresh')])
+    ar =len(df[(df['genres']==firstGenre)&(df['tomatometer_status']=='Rotten')])
+    ag = acf+af+ar
+
+Validation()
 pacf = acf/ag
 paf = af/ag
 par = ar/ag
 
-print("")
-b = input("What is the second genre you would like to compare\n").title()
-#if (df['genres']!=b):
-#    b = input("Enter a valid genre\n").title()
 
-bcf =len(df[(df['genres']==b)&(df['tomatometer_status']=='Certified-Fresh')])
-#nb =len(df[(df['genres']==a)&(df['tomatometer_status']!='Certified-Fresh' !='Fresh'!='Rotten')])
-bf =len(df[(df['genres']==b)&(df['tomatometer_status']=='Fresh')])
-br =len(df[(df['genres']==b)&(df['tomatometer_status']=='Rotten')])
-bg = bcf+bf+br
-#bg =len(df[(df['genres']==b)]) Includes movies with missing tomatometer status
+print("\nPlease choose the second genre you would like to compare")
+Validation()
 
+pbcf = acf/ag
+pbf = af/ag
+pbr = ar/ag
 
-pbcf = bcf/bg
-pbf = bf/bg
-pbr = br/bg
-
-#multiply the 6 variables above by 100
-#print("Genre "+ a)
-#print("percentage of certified fresh is: " + "%.2f" % pacf)
-#print("percentage of fresh is: " + "%.2f" % paf)
-#print("percentage of rotten is: " + "%.2f" % par + "\n")
-
-#print("Genre "+ b)
-#print("percentage of certified fresh is: " + "%.2f" % pbcf)
-#print("percentage of fresh is: " + "%.2f" % pbf)
-#print("percentage of rotten is: " + "%.2f" % pbr)
 
 data1 = np.array([pacf, paf, par])
 data2 = np.array([pbcf, pbf, pbr])
