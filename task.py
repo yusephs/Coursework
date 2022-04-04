@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 from matplotlib import pyplot as plt
 
-df = pd.read_csv('data2.csv', sep = '|')
+df = pd.read_csv('data.csv')
 
 def Validation():
     global certifiedFresh, fresh, rotten, total, genre
@@ -55,8 +55,8 @@ labels = 'Certified Fresh', 'Fresh', 'Rotten'
 
 fig, (ax1, ax2) = plt.subplots(1, 2)
 
-ax1.pie(data1, labels=labels, autopct='%.1f%%')
-ax2.pie(data2, labels=labels, autopct='%.1f%%')
+ax1.pie(data1, labels=labels, autopct='%.1f%%', colors=['green','orange','red',])
+ax2.pie(data2, labels=labels, autopct='%.1f%%', colors=['green','orange','red',])
 
 ax1.set_title(firstGenre)
 ax2.set_title(secondGenre)
